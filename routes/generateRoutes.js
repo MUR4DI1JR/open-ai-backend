@@ -1,7 +1,5 @@
-const express = require('express');
-const {handler} = require('./aiImage');
+import express from 'express'
+import {handler} from './aiImage'
 const router = express.Router();
 
-router.post('/generate-image', handler);
-
-module.exports = router;
+export const generateImage = router.post('/generate-image', handler);
