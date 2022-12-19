@@ -20,6 +20,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
 app.post('/openai/generate-image', handler);
 
 app.post('/auth/login', login);
