@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 export const handler = async (request, response) => {
     try{
         const configuration = new Configuration({
-            apiKey: process.env.OPEN_AI_API_KEY,
+            apiKey: "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",
         });
 
         const openai = new OpenAIApi(configuration);
@@ -19,5 +19,8 @@ export const handler = async (request, response) => {
         return response.status(200).json({ image });
     }catch (e){
         console.log(e);
+        response.json({
+            message: e,
+        })
     }
 }
