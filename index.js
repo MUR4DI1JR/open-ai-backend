@@ -12,7 +12,7 @@ import {UserController, PostController} from "./controllers/index.js";
 import {handler} from "./routes/aiImage.js";
 import multer from "multer";
 
-mongoose.connect("mongodb+srv://user:2107hitagii@minterest.ivqlwrr.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_DB)
     .then(() => console.log("db ok"))
     .catch((e) => console.log("db error", e))
 
