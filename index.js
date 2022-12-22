@@ -1,5 +1,4 @@
 import express  from 'express';
-// import dotenv  from 'dotenv'.config();
 import cors from 'cors';
 import mongoose from "mongoose";
 
@@ -12,7 +11,7 @@ import {UserController, PostController} from "./controllers/index.js";
 import {handler} from "./routes/aiImage.js";
 import multer from "multer";
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log("db ok"))
     .catch((e) => console.log("db error", e))
 
