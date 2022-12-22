@@ -11,7 +11,8 @@ import {UserController, PostController} from "./controllers/index.js";
 import {handler} from "./routes/aiImage.js";
 import multer from "multer";
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose
+    .connect(process.env.MONGODB_URL)
     .then(() => console.log("db ok"))
     .catch((e) => console.log("db error", e))
 
