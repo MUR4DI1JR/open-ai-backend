@@ -12,7 +12,7 @@ import {handler} from "./routes/aiImage.js";
 import multer from "multer";
 
 mongoose
-    .connect(process.env.MONGODB_URL)
+    .connect('mongodb+srv://user:2107hitagii@minterest.ivqlwrr.mongodb.net/?retryWrites=true&w=majority')
     .then(() => console.log("db ok"))
     .catch((e) => console.log("db error", e))
 
