@@ -111,7 +111,7 @@ export const getUser = async (req, res) => {
         }
 
 
-        res.json({posts, ...user});
+        res.json({user, posts});
 
     }catch (e) {
         console.log(e);
