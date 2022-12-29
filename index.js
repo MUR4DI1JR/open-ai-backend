@@ -16,7 +16,7 @@ import multer from "multer";
 // mongodb+srv://user:2107hitagii@minterest.ivqlwrr.mongodb.net/?retryWrites=true&w=majority
 
 mongoose
-    .connect('mongodb+srv://user:2107hitagii@minterest.ivqlwrr.mongodb.net/?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB_URL)
     .then(() => console.log("db ok"))
     .catch((e) => console.log("db error", e))
 
@@ -51,9 +51,11 @@ app.post('/uploads', checkAuth, upload.single('image'), (req, res) =>{
     res.json({
         url: `/uploads/${req.file.originalname}`,
     })
-})
+});
 
 app.get('/auth/me', checkAuth, UserController.getMe);
+
+app.get('/auth/:name', UserController.getUser);
 
 app.get('/posts', PostController.getAll);
 

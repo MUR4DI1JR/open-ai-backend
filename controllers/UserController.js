@@ -94,3 +94,26 @@ export const getMe = async (req, res) =>{
         console.log(e);
     }
 }
+
+export const getUser = async (req, res) => {
+    try {
+        const user = await UserModel.find({
+            fullName: req.params.name
+        });
+        const posts = await PostModel.find({
+            user: user._id
+        });
+
+        if (!user){
+            return res.status(403).json({
+                message: "don't found users"
+            })
+        }
+
+
+        res.json({posts, ...user});
+
+    }catch (e) {
+        console.log(e);
+    }
+}
