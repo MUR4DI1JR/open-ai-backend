@@ -11,6 +11,10 @@ import {UserController, PostController} from "./controllers/index.js";
 import {handler} from "./routes/aiImage.js";
 import multer from "multer";
 
+// process.env.MONGODB_URL
+
+// mongodb+srv://user:2107hitagii@minterest.ivqlwrr.mongodb.net/?retryWrites=true&w=majority
+
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => console.log("db ok"))
@@ -54,6 +58,8 @@ app.get('/auth/me', checkAuth, UserController.getMe);
 app.get('/posts', PostController.getAll);
 
 app.get('/tags', PostController.getTags);
+
+app.get('/tags/:tag', PostController.getTagsOne);
 
 app.get('/posts/:id', PostController.getOne);
 

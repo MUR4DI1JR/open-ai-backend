@@ -66,6 +66,24 @@ export const getTags = async (req, res) => {
     }
 }
 
+export const getTagsOne = async (req, res) => {
+    try {
+        const tagName = req.params.tag;
+
+        const posts = await PostModel.find({
+            tags: tagName
+        });
+
+        res.json(posts);
+
+    }catch (e){
+        console.log(e);
+        res.status(500).json({
+            message: "Don't get tags."
+        })
+    }
+}
+
 export const removePost = async (req, res) => {
     try {
         const postId = req.params.id;
