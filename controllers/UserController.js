@@ -1,7 +1,7 @@
-import {validationResult} from "express-validator";
 import bcrypt from "bcrypt";
 import UserModel from "../models/User.js";
 import jwt from "jsonwebtoken";
+import PostModel from "../models/Post.js";
 
 export const register = async (req, res) =>{
     try {
@@ -77,6 +77,9 @@ export const login = async (req, res) => {
 export const getMe = async (req, res) =>{
     try{
         const user = await UserModel.findById(req.userId);
+        const posts = await PostModel.find({
+            user
+        });
 
         if (!user){
             return res.status(403).json({
@@ -86,7 +89,7 @@ export const getMe = async (req, res) =>{
 
         const {passwordHash, ...userData} = user._doc;
 
-        res.json(userData);
+        res.json({userData, posts});
     }catch (e){
         console.log(e);
     }
